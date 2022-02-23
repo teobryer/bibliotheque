@@ -59,12 +59,14 @@
 
         </div>
 
-
+        <div class="mb-3">
+            <label  class="form-label">Éditeur</label>
         <select  class="form-control" th:field="*{editeur}">
             <option th:each="oneEditeur : ${allEditeurs}" th:value="${oneEditeur.id}" th:text="${oneEditeur.nom}"></option>
             </option>
 
         </select>
+        </div>
 
 
 
