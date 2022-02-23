@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class EditeurService implements IEditeurService{
@@ -15,12 +17,25 @@ public class EditeurService implements IEditeurService{
     EditeurDAO editeurDAO;
 
     @Override
-    public Editeur ajouterUnEditeur(Editeur editeur) {
+    public Editeur ajouterUnEditeur(Editeur editeur) throws Exception {
         editeur.setId(0);
 
-        editeurDAO.save(editeur);
 
-        return  editeur;
+       List<Editeur> listEditeur = editeurDAO.findByNameNoCaseSensitive(editeur.getNom().toLowerCase());
+
+
+
+
+       if(null== listEditeur || listEditeur.isEmpty()){
+
+           editeurDAO.save(editeur);
+
+           return  editeur;
+       }
+
+       throw new Exception("Cet éditeur existe déjà");
+
+
 
     }
 

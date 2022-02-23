@@ -22,7 +22,7 @@ public class Livre {
     private Auteur auteurObj;
 
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne()
     @JoinColumn (name="id_editeur")
     private Editeur editeur;
 

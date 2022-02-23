@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IEditeurService {
 
-    Editeur ajouterUnEditeur(Editeur editeur);
+    Editeur ajouterUnEditeur(Editeur editeur) throws Exception;
     void modifierUnEditeur(Editeur editeur) throws Exception;
 
     void supprimerUnEditeur(Editeur editeur);
